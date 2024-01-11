@@ -4,6 +4,7 @@ import SidebarItemLink from "./SidebarItemLink.vue";
 import { computed } from "vue";
 import { isExternal } from "@/utils/validate";
 import path from "path-browserify"
+import SvgIcon from "@/components/SvgIcon/index.vue"
 
 interface Props {
     item: RouteRecordRaw
@@ -43,7 +44,7 @@ const resolvePath = (routePath: string) => {
     <template v-else-if="showingChildNumber === 1">
         <SidebarItemLink v-if="showingChildren[0].meta" :to="resolvePath(showingChildren[0].path)">
             <el-menu-item :index="resolvePath(showingChildren[0].path)">
-                <SvgIcon v-if="showingChildren[0].meta.svgIcon" :name="showingChildren[0].meta.svgIcon" />
+                <SvgIcon v-if="showingChildren[0].meta.svgIcon" :name="(showingChildren[0].meta.svgIcon as string)" />
                 <component v-else-if="showingChildren[0].meta.elIcon" :is="showingChildren[0].meta.elIcon"
                     class="el-icon" />
                 <template v-if="showingChildren[0].meta.title" #title>
@@ -54,7 +55,7 @@ const resolvePath = (routePath: string) => {
     </template>
     <el-sub-menu v-else :index="resolvePath(props.item.path)" teleported>
         <template #title>
-            <SvgIcon v-if="props.item.meta?.svgIcon" :name="props.item.meta.svgIcon" />
+            <SvgIcon v-if="props.item.meta?.svgIcon" :name="(props.item.meta.svgIcon as string)" />
             <component v-else-if="props.item.meta?.elIcon" :is="props.item.meta.elIcon" class="el-icon" />
             <span v-if="props.item.meta?.title">{{ props.item.meta.title }}</span>
         </template>

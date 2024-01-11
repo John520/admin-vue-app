@@ -5,6 +5,7 @@ import 'element-plus/dist/index.css'
 import "@/styles/index.scss"
 import router from '@/router/index'
 import "@/router/permission"
+import "virtual:svg-icons-register"
 
 
 const app = createApp(App);
