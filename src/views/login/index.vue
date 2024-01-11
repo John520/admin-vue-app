@@ -3,12 +3,15 @@ import { ElForm, ElFormItem } from "element-plus";
 import { User, Lock, Key, Picture, Loading } from "@element-plus/icons-vue";
 import { type LoginRequestData } from "@/api/login/types/login";
 import { reactive, ref } from "vue";
-import { getLoginCodeApi } from "@/api/login";
+import { getLoginCodeApi, loginApi } from "@/api/login";
+import { getUserStore } from "@/store/model/user";
+import router from "@/router";
 
 /** 登录按钮 Loading */
 const loading = ref(false);
 /** 验证码图片 URL */
 const codeUrl = ref("");
+const userStore = getUserStore();
 
 /** 登录表单数据 */
 const loginFormData: LoginRequestData = reactive({
@@ -18,7 +21,9 @@ const loginFormData: LoginRequestData = reactive({
 });
 
 const handleLogin = () => {
-  console.log(loginFormData);
+  userStore.login(loginFormData).then(() => {
+    router.push("/");
+  });
 };
 /** 创建验证码 */
 const createCode = () => {
