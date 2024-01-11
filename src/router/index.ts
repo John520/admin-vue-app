@@ -3,6 +3,7 @@ import { type RouteRecordRaw, createRouter, createWebHashHistory } from "vue-rou
 
 
 const Layouts = () => import("@/layouts/LeftMode.vue")
+const MultiLevel = () => import("@/layouts/components/MultiLevel/index.vue")
 
 
 export const constantRoutes: RouteRecordRaw[] = [
@@ -17,6 +18,9 @@ export const constantRoutes: RouteRecordRaw[] = [
     path: "/",
     redirect: "/dashboard",
     component: Layouts,
+    meta: {
+      title: "默认",
+    },
     children: [{
       path: "dashboard",
       name: "Dashboard",
@@ -24,23 +28,27 @@ export const constantRoutes: RouteRecordRaw[] = [
       meta: {
         title: "首页",
         svgIcon: "dashboard",
-        affix: true
       },
 
-    }]
+    }],
+
   },
   {
     path: "/menu1",
     component: Layouts,
     redirect: "/menu1/index",
+    meta: {
+      title: "岳阳楼记1",
+    },
     children: [{
       path: "index1",
       component: () => import("@/views/manu1/index.vue"),
       meta: {
-        title: "岳阳楼记",
+        title: "岳阳楼记1-1",
         svgIcon: "link"
       },
-    }]
+    }],
+
 
   },
   {
@@ -48,22 +56,29 @@ export const constantRoutes: RouteRecordRaw[] = [
     component: Layouts,
     meta: {
       title: "岳阳楼记2",
-      svgIcon: "link"
     },
     children: [{
       path: "index21",
-      component: () => import("@/views/manu1/index.vue"),
+      component: () => import("@/views/manu2/index21.vue"),
       meta: {
+        svgIcon: "link",
         title: "岳阳楼记2-1",
-        svgIcon: "link"
       },
     }, {
       path: "index22",
-      component: () => import("@/views/manu1/index.vue"),
+      component: MultiLevel,
       meta: {
         title: "岳阳楼记2-2",
-        svgIcon: "link"
       },
+      children: [{
+        path: "index221",
+        component: () => import("@/views/manu2/index221.vue"),
+        meta: {
+          svgIcon: "link",
+          title: "岳阳楼记2-2-1",
+        },
+      },
+      ]
     }]
   }
 

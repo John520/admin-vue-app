@@ -41,14 +41,14 @@ const resolvePath = (routePath: string) => {
 </script>
 <template>
     <template v-if="props.item.meta?.hidden"></template>
-    <template v-else-if="showingChildNumber === 1">
-        <SidebarItemLink v-if="showingChildren[0].meta" :to="resolvePath(showingChildren[0].path)">
-            <el-menu-item :index="resolvePath(showingChildren[0].path)">
-                <SvgIcon v-if="showingChildren[0].meta.svgIcon" :name="(showingChildren[0].meta.svgIcon as string)" />
-                <component v-else-if="showingChildren[0].meta.elIcon" :is="showingChildren[0].meta.elIcon"
+    <template v-else-if="showingChildNumber === 0">
+        <SidebarItemLink v-if="item.meta" :to="resolvePath(item.path)">
+            <el-menu-item :index="resolvePath(item.path)">
+                <SvgIcon v-if="item.meta.svgIcon" :name="(item.meta.svgIcon as string)" />
+                <component v-else-if="item.meta.elIcon" :is="item.meta.elIcon"
                     class="el-icon" />
-                <template v-if="showingChildren[0].meta.title" #title>
-                    {{ showingChildren[0].meta.title }}
+                <template v-if="item.meta.title" #title>
+                    {{ item.meta.title }}
                 </template>
             </el-menu-item>
         </SidebarItemLink>
@@ -61,7 +61,7 @@ const resolvePath = (routePath: string) => {
         </template>
         <template v-if="props.item.children">
             <sidebar-item v-for="child in props.item.children" :key="child.path" :item="child"
-                :is-collapse="props.isCollapse" :is-first-level="false" :base-path="resolvePath(child.path)" />
+                :is-collapse="props.isCollapse"  :base-path="resolvePath(item.path)" />
         </template>
     </el-sub-menu>
 </template>

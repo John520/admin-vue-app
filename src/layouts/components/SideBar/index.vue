@@ -13,7 +13,7 @@ console.log("routes:", permissionStore.routes)
     <el-scrollbar wrap-class="scrollbar-wrapper">
       <el-menu class="el-menu-wrapper" :collapse=false>
         <el-menu>
-          <SidebarItem v-for="route in permissionStore.routes" :key="route.path" :item="route" :base-path="route.path" />
+          <SidebarItem v-for="route in permissionStore.routes" :key="route.path" :item="route" :base-path="route.path" :is-collapse="false" />
         </el-menu>
       </el-menu>
     </el-scrollbar>
