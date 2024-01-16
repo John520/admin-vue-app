@@ -20,6 +20,7 @@ export const constantRoutes: RouteRecordRaw[] = [
     component: Layouts,
     meta: {
       title: "默认",
+      elIcon: "Menu"
     },
     children: [{
       path: "dashboard",
@@ -36,9 +37,9 @@ export const constantRoutes: RouteRecordRaw[] = [
   {
     path: "/menu1",
     component: Layouts,
-    redirect: "/menu1/index",
     meta: {
       title: "岳阳楼记1",
+      elIcon: "Menu",
     },
     children: [{
       path: "index1",

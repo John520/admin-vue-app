@@ -19,28 +19,31 @@ const { layoutMode } = storeToRefs(settingsStore);
 
 <template>
   <div class="layout-logo-container">
-    <transition name="layout-logo-fade">
       <router-link v-if="props.collapse" key="collapse" to="/">
-        <img :src="logo" class="layout-logo" />
+        <img :src="logo" class="layout-logo-collapse" />
       </router-link>
       <router-link v-else key="expand" to="/">
-        <img :src="layoutMode !== 'left' ? logoText2 : logoText1" class="layout-logo-text" />
+        <img :src="layoutMode !== 'left' ? logoText2 : logoText1" class="layout-logo-expand" />
       </router-link>
-    </transition>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .layout-logo-container {
   background-color: transparent;
-  .layout-logo {
-    // position:relative;
-    width: 32px;
-    height: 32px;
+  width: 100%;
+  height: var(--v3-header-height);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .layout-logo-collapse {
+    width: 40px;
+    height: 40px;
   }
 
-  .layout-logo-text {
+  .layout-logo-expand {
     width: 100%;
+    height: 100%;
   }
 }
 </style>
