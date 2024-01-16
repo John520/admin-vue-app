@@ -43,7 +43,7 @@ const resolvePath = (routePath: string) => {
     <template v-if="props.item.meta?.hidden"></template>
     <template v-else-if="showingChildNumber === 0">
         <SidebarItemLink v-if="item.meta" :to="resolvePath(item.path)">
-            <el-menu-item :index="resolvePath(item.path)">
+            <el-menu-item :index="resolvePath(item.path)" >
                 <SvgIcon v-if="item.meta.svgIcon" :name="(item.meta.svgIcon as string)" />
                 <component v-else-if="item.meta.elIcon" :is="item.meta.elIcon"
                     class="el-icon" />

@@ -11,10 +11,6 @@
 // mixin
 @import "./mixins.scss";
 
-// 业务页面几乎都应该在根元素上挂载 class="app-container"，以保持页面美观
-.app-container {
-  padding: 20px;
-}
 
 html {
   height: 100%;
@@ -32,22 +28,4 @@ body {
 
 #app {
   height: 100%;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-a,
-a:focus,
-a:hover {
-  color: inherit;
-  outline: none;
-  text-decoration: none;
-}
-
-div:focus {
-  outline: none;
 }

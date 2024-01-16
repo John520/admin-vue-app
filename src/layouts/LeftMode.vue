@@ -18,7 +18,7 @@ const sidebarClass=computed(()=>{
 
 <template>
   <div :class="sidebarClass">
-    <Sidebar class="sidebar-container" :is-collapse="isCollapse" >siderbar</Sidebar>
+    <Sidebar class="sidebar-container" :is-collapse="isCollapse" ></Sidebar>
     <div class="main-container">
       <div class="layout-header">
         <NavigationBar />
@@ -46,7 +46,6 @@ const sidebarClass=computed(()=>{
 
 .sidebar-container {
   background-color: var(--v3-sidebar-menu-bg-color);
-  overflow: hidden;
 }
 
 
